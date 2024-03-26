@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using UnityEngine;
-using Google.Protobuf.WellKnownTypes;
-using UnityEditor.ShaderKeywordFilter;
-using NUnit.Framework;
-using Unity.VisualScripting;
-using TMPro;
 
 public class EnemyAvoidanceAgent : Agent
 {
@@ -23,7 +16,6 @@ public class EnemyAvoidanceAgent : Agent
 
     GameObject[] children;
     public GameObject enemyParent;
-    GameObject enemy;
     Stopwatch timer;
     float timeElapsed = 0;
     float currentLongestTime = 0; 
@@ -61,7 +53,7 @@ public class EnemyAvoidanceAgent : Agent
         sensor.AddObservation(this.transform.localPosition);
         for (int i = 0; i < children.Length; i++)
         {
-            // Find nearest enemy to the
+            // Find nearest enemy to the agent
             sensor.AddObservation(children[i].transform.localPosition);
         }
         
